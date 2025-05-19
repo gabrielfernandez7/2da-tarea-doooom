@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math Evaluations</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header, nav, footer { background-color: #222; color: white; padding: 1rem; text-align: center; }
+    nav a { color: #fff; margin: 0 10px; text-decoration: none; }
+    section { padding: 1rem; }
+    .exercise { margin-bottom: 2rem; background: #f4f4f4; padding: 1rem; border-radius: 5px; }
+    form { margin-bottom: 1rem; }
+    label { display: block; margin: 0.5rem 0 0.2rem; }
+    input { padding: 0.4rem; width: 100px; }
+    button { margin-top: 0.5rem; padding: 0.5rem 1rem; }
+    .result { margin-top: 0.5rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Evaluación de Expresiones Matemáticas</h1>
+  </header>
+
+  <nav>
+    <a href="#ex6">Ejercicio 6</a>
+    <a href="#ex7">Ejercicio 7</a>
+    <a href="#ex8">Ejercicio 8</a>
+    <a href="#ex9">Ejercicio 9</a>
+    <a href="#ex10">Ejercicio 10</a>
+  </nav>
+
+  <section id="ex6" class="exercise">
+    <h2>Ejercicio 6</h2>
+    <form onsubmit="event.preventDefault(); calcularEj6()">
+      <label for="z">z:</label>
+      <input type="number" step="any" id="z" value="4.5" />
+      <button type="submit">Calcular</button>
+    </form>
+    <div class="result" id="res6"></div>
+  </section>
+
+  <section id="ex7" class="exercise">
+    <h2>Ejercicio 7</h2>
+    <form onsubmit="event.preventDefault(); calcularEj7()">
+      <label for="t">t:</label>
+      <input type="number" step="any" id="t" value="3.2" />
+      <button type="submit">Calcular</button>
+    </form>
+    <div class="result" id="res7"></div>
+  </section>
+
+  <section id="ex8" class="exercise">
+    <h2>Ejercicio 8</h2>
+    <form onsubmit="event.preventDefault(); calcularEj8()">
+      <label for="x8">x:</label>
+      <input type="number" step="any" id="x8" value="6.5" />
+      <label for="y8">y:</label>
+      <input type="number" step="any" id="y8" value="3.8" />
+      <button type="submit">Calcular</button>
+    </form>
+    <div class="result" id="res8"></div>
+  </section>
+
+  <section id="ex9" class="exercise">
+    <h2>Ejercicio 9</h2>
+    <form onsubmit="event.preventDefault(); calcularEj9()">
+      <label for="c">c:</label>
+      <input type="number" step="any" id="c" value="4.6" />
+      <label for="d">d:</label>
+      <input type="number" step="any" id="d" value="1.7" />
+      <button type="submit">Calcular</button>
+    </form>
+    <div class="result" id="res9"></div>
+  </section>
+
+  <section id="ex10" class="exercise">
+    <h2>Ejercicio 10</h2>
+    <form onsubmit="event.preventDefault(); calcularEj10()">
+      <label for="x10">x (en radianes):</label>
+      <input type="number" step="any" id="x10" value="0.314" />
+      <button type="submit">Calcular</button>
+    </form>
+    <div class="result" id="res10"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Página de Evaluaciones Matemáticas</p>
+  </footer>
+
+  <script>
+    function calcularEj6() {
+      const z = parseFloat(document.getElementById("z").value);
+      const a = 0.4 * z**4 + 3.1 * z**2 - 162.3 * z - 80.7;
+      const b = (z**3 - 23) / (3 * Math.sqrt(z**2 + 17.5));
+      document.getElementById("res6").textContent = `(a) ${a.toFixed(2)} | (b) ${b.toFixed(2)}`;
+    }
+
+    function calcularEj7() {
+      const t = parseFloat(document.getElementById("t").value);
+      const a = 0.5 * Math.exp(2 * t) - 3.8 * t**3;
+      const b = (6 * t**2 + 6 * t - 2) / (t**2 - 1);
+      document.getElementById("res7").textContent = `(a) ${a.toFixed(2)} | (b) ${b.toFixed(2)}`;
+    }
+
+    function calcularEj8() {
+      const x = parseFloat(document.getElementById("x8").value);
+      const y = parseFloat(document.getElementById("y8").value);
+      const a = ((x**2 + y**2)**(2/3)) + (x*y / (y - x));
+      const b = Math.sqrt((x + y) / ((x - y)**2)) + 2 * x**2 - x * y**2;
+      document.getElementById("res8").textContent = `(a) ${a.toFixed(2)} | (b) ${b.toFixed(2)}`;
+    }
+
+    function calcularEj9() {
+      const c = parseFloat(document.getElementById("c").value);
+      const d = parseFloat(document.getElementById("d").value);
+      const a = c * d**2;
+      const b = (c + a) / (c - d);
+      const parte1 = Math.exp(d - b);
+      const parte2 = Math.cbrt(c + a - (c * a)**d);
+      const r1 = parte1 + parte2;
+      const r2 = d / c + ((c * d / b)**2) - c**d - a / b;
+      document.getElementById("res9").textContent = `(a) ${r1.toFixed(3)} | (b) ${r2.toFixed(2)}`;
+    }
+
+    function calcularEj10() {
+      const x = parseFloat(document.getElementById("x10").value);
+      const a = Math.cos(x)**2 - Math.sin(x)**2;
+      const b = Math.tan(x) / (Math.sin(x) - 2 * Math.tan(x));
+      const c = 1 / Math.cos(x - 2);
+      document.getElementById("res10").textContent = `(a) ${a.toFixed(3)} = 1 - 2sin²x | (b) ${b.toFixed(3)} = ${c.toFixed(3)}`;
+    }
+  </script>
+</body>
+</html>
